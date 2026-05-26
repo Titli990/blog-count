@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>AI Blog Counter</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Agentic AI Blog Counter</h1>
+
+    <form method="POST">
+
+        <input type="text"
+               name="client"
+               placeholder="Client Name"
+               required>
+
+        <input type="number"
+               name="month"
+               placeholder="Month (1-12)"
+               required>
+
+        <input type="number"
+               name="year"
+               placeholder="Year"
+               required>
+
+        <button type="submit">
+            Generate Report
+        </button>
+
+    </form>
+
+    {% if report %}
+
+    <div class="report">
+
+        <h2>Blog Report</h2>
+
+        <p>
+            <strong>Client:</strong>
+            {{ report.client }}
+        </p>
+
+        <p>
+            <strong>Total Blogs:</strong>
+            {{ report.total }}
+        </p>
+
+        <p>
+            <strong>
+                Blogs Posted In
+                {{ report.month }}
+                {{ report.year }}:
+            </strong>
+
+            {{ report.count }}
+        </p>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>
